@@ -1,0 +1,9 @@
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+    background: grey;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3px;
+    width: 100%;
+`;
