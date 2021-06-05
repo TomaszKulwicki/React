@@ -1,6 +1,11 @@
-import { FC } from 'React';
+import { FC, useState, ChangeEvent } from 'react';  //React
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+
+import { useSelector } from 'react-redux';
+import { IState } from '../../reducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IPhotosReducer } from '../../reducers/photosReducers';
 
 const Filter = styled.div`
 .place{
@@ -48,6 +53,7 @@ const Account = styled.div`
     width: 30px;
     height: 30px;
     float: left;
+    border-radius: 25px;
 }
 `;
 
@@ -62,43 +68,97 @@ const Miniprofile = styled.div`
 }
 `;
 
+const Category = styled.div`
+overflow:scroll;
+overflow-x: hidden;
+height: 400px;
+`;
+
 export const ExpandedMenu: FC = () =>  {
+
+    const { usersList } = useSelector<IState, IUsersReducer>(globalState => globalState.users);
+    const { photosList } = useSelector<IState, IPhotosReducer>(globalState => globalState.photos);
+
+    const [inputText, setInputText] = useState<string>('');
+
+    const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        setInputText(text)
+    }
+
     return(
         <Menu>
             <Corporate>
 
             </Corporate>
             <Filter>
-                <input type = 'text' placeholder = 'Filter...' className = 'place'></input>
+                <input type = 'text' placeholder = 'Filter...' className = 'place' value = {inputText} onChange = {inputHandler}></input>
             </Filter>
-            <Platform>
-                <div className = 'title'>Platform</div>
-                <Link to = '/'>
-                    <img src = 'media/icons/house.png' alt = ''/>Home
-                </Link>
-                <Link to = '/Publications'>
-                    <p><img src = 'media/icons/publications.png' alt = ''/>Publications</p>
-                </Link>
-                <p><img src = 'media/icons/people.png' alt = ''/>People</p>
-                    <Link to = '/Entities'>
-                <p><img src = 'media/icons/entities.png' alt = ''/>Entities</p>
+            <Category>
+                <Platform>
+                        <div className = 'title'>Platform</div>               
+                    <Link to = '/'>
+                    {'Home'.toLowerCase().includes(inputText.toLowerCase()) &&
+                        <p><img src = 'media/icons/house.png' alt = ''/>Home</p>
+                    }
                     </Link>
-                <p><img src = 'media/icons/administration.png' alt = ''/>Administration</p>
-            </Platform>
-            <Workspaces>
-                <div className = 'title'>Workspaces</div>
-                <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Client contract</p>
-                <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Supplier contract</p>
-                <p><img src = 'media/icons/entities.png' alt = ''/>Corporate</p>
-                <p><img src = 'media/icons/book-solid.svg' alt = ''/>Group norms</p>
-                <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Real estate contracts</p>
-            </Workspaces>
+                    <Link to = '/Publications'>
+                    {'Publications'.toLowerCase().includes(inputText.toLowerCase()) &&
+                        <p><img src = 'media/icons/publications.png' alt = ''/>Publications</p>
+                    }
+                    </Link>
+                    {'People'.toLowerCase().includes(inputText.toLowerCase()) &&
+                        <p><img src = 'media/icons/people.png' alt = ''/>People</p>
+                    }
+                        <Link to = '/Entities'>
+                    {'Entities'.toLowerCase().includes(inputText.toLowerCase()) &&
+                        <p><img src = 'media/icons/entities.png' alt = ''/>Entities</p>
+                    }
+                        </Link>
+                    {'Administration'.toLowerCase().includes(inputText.toLowerCase()) &&
+                        <p><img src = 'media/icons/administration.png' alt = ''/>Administration</p>
+                    }
+                </Platform>
+                <Workspaces>
+                    <div className = 'title'>Workspaces</div>
+                        {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Client contract</p>
+                        }
+                        {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Supplier contract</p>
+                        }
+                        {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/entities.png' alt = ''/>Corporate</p>
+                        }
+                        {'Group norms'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>Group norms</p>
+                        }
+                        {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Real estate contracts</p>
+                        }
+                        {'E-commerence'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>E-commerence</p>
+                        }
+                        {'Blog'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Blog</p>
+                        }
+                        {'Buisness'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Buissnes</p>
+                        }
+                        {'Contact'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/people.png' alt = ''/>Contact</p>
+                        }
+                        {'Books'.toLowerCase().includes(inputText.toLowerCase()) &&
+                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>Books</p>
+                        }
+                </Workspaces>
+            </Category>
             <Account>
                 <hr></hr>
                 <div className = 'title'>Account</div>
                 <Miniprofile>
-                <img src = 'media/icons/face.png' className = 'face' alt = ''/>
-                <div className = 'name'>Imie i nazwisko chyba</div>
+                <img src = {photosList[0]?.url} className = 'face' alt = ''/>
+                <div className = 'name'>{usersList?.[0]?.name}</div>
                 <Link to ='/Profile'>
                     <div className = 'see'>See profile</div>
                 </Link>

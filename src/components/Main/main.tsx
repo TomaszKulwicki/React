@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TopBar } from '../TopBar/top';
@@ -9,6 +9,17 @@ import { Ecosystem } from '../Ecosystem/ecosystem';
 import { Entities } from '../Entities/entities';
 import { Overwiev } from '../Overwiev/overwiev';
 import { Profile } from '../Profile/profile';
+
+import { useDispatch } from 'react-redux';
+import { getUsers } from '../../actions/usersActions';
+import { getPhotos } from '../../actions/photoActions';
+import { getComments } from '../../actions/commentActions';
+import { getPosts} from '../../actions/postActions';
+
+type GetUsers = ReturnType<typeof getUsers>
+type GetPhotos = ReturnType<typeof getPhotos>
+type GetComments = ReturnType<typeof getComments>
+type GetPosts = ReturnType<typeof getPosts>
 
 const Wrapper = styled.div``;
 
@@ -21,6 +32,16 @@ const Content = styled.div`
 `;
 
 export const Main: FC = () => {
+
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch<GetUsers>(getUsers());
+      dispatch<GetPhotos>(getPhotos());
+      dispatch<GetComments>(getComments());
+      dispatch<GetPosts>(getPosts());
+    },  );
+
     return(
         <Router>
             <Wrapper>
@@ -43,9 +64,9 @@ export const Main: FC = () => {
                             </Route>
                             <Route path = '/'>
                                 <Overwiev/>
-                            </Route>
-                        </Switch>
-                    </Content>
+                            </Route>        
+                        </Switch>   
+                    </Content>  
                 </InnerWrapper> 
             </Wrapper> 
         </Router>

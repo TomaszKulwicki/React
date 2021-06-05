@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
-import { FC } from 'React';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { IState } from '../../reducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IPhotosReducer } from '../../reducers/photosReducers';
+
+//https://jsonplaceholder.typicode.com/
 
 const LefttMenu = styled.div `
 margin: 25px;
@@ -23,6 +30,11 @@ const Profile = styled.div`
 .job{
     color:grey;
     font-size: 13px;
+}
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
 }
 text-align: center;
 `;
@@ -86,13 +98,17 @@ img{
 `;
 
 export const LeftMenu: FC = () => {
+
+    const { usersList } = useSelector<IState, IUsersReducer>(globalState => globalState.users);
+    const { photosList } = useSelector<IState, IPhotosReducer>(globalState => globalState.photos);
+
     return (    
         <LefttMenu>
             <Card>
                 <Profile>
                     <Link to = '/Profile'>
-                        <img src = 'media/icons/face.png' className = 'face' alt = ''/>
-                        <div className = 'name'>Barney Stinson</div>
+                        <img src = {photosList[0]?.url} className = 'face' alt = ''/>
+                        <div className = 'name'>{usersList?.[0]?.name}</div>
                     </Link>
                     <div className = 'job'>Job title - Company</div><hr></hr>
                 </Profile>

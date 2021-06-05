@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
-import { FC } from 'React';
+import { FC } from 'react';
 import { Wrapper } from '../styledHelpers/Components';
 import { ExpandedMenu } from './ExpandedMenu';
 import { Link } from "react-router-dom";
@@ -59,7 +59,7 @@ const InputWrapper = styled.div`
 width: 45%;
 display: flex;
 align-content: center;
-margin-left: 35%;
+margin-left: 500px;
 input{
     border: none;
     width: 100%;
@@ -73,16 +73,30 @@ input{
 }
 `;
 
-const ExpandedMenu1 = styled.div``;
-
-const Menu = styled.div`
+const ExpandedMenu1 = styled.div`
+button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    width: 220px;
+}
 .arrow{
-    margin-left: 15px;
+    float: right;
+    margin-top: 5px;
+}
+.home{
+    float: left;
 }
 `;
 
+const Menu = styled.div`
+
+`;
+
 export const TopBar: FC = () => {
+
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
     return(
         <Wrapper>
             <InnerWrapper>
@@ -90,8 +104,10 @@ export const TopBar: FC = () => {
                 <img src = "media/icons/house.png" className = "house" alt = ""/>
                 <div>
                     <ExpandedMenu1>
-                        <Menu ref = {wrapperRef}> 
-                            <img onClick = { toggleDropdown } src = 'media/icons/arrow-down.png' className = 'arrow' alt = ''/>
+                        <Menu ref = {wrapperRef}>
+                            <button onClick = { toggleDropdown }><div className = 'home'>Home</div>
+                                <img src = 'media/icons/arrow-down.png' className = 'arrow' alt = ''/>
+                            </button>
                             { dropdownOpen && 
                             <ExpandedMenu/>
                             }
