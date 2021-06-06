@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IState } from '../../reducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
@@ -285,6 +285,14 @@ export const Profile: FC = () => {
     const { usersList } = useSelector<IState, IUsersReducer>(globalState => globalState.users);
     const { photosList } = useSelector<IState, IPhotosReducer>(globalState => globalState.photos);
 
+    let [isChange, showChange] = useState(false);
+    let [name, setName] = useState(usersList?.[0]?.name);
+    let [company,setCompany] = useState(usersList?.[0]?.company.name);
+    let [city,setCity] = useState(usersList?.[0]?.address.city);
+    let [partner,setPartner] = useState('Partner');
+    let [email,setEmail] = useState(usersList?.[0]?.email);
+    let [phone,setPhone] = useState(usersList?.[0]?.phone);
+
     return(
         <MainWrapper>
             <MiniProfile>
@@ -309,19 +317,19 @@ export const Profile: FC = () => {
                     </Photo>
                     <Edit>
                         <div className = 'edit'>
-                            <img src = 'media/icons/save.png' alt = '' id = 'save'/>
+                            <img src = 'media/icons/save.png' alt = '' id = 'save' onClick={()=>showChange(isChange === false ? isChange = true:isChange=false)}/>
                             <img src = 'media/icons/pen.png' alt = ''/>
                         </div>
                         <div className = 'form'>
                             <div className = 'left'>
-                                <input type = 'text' value = {usersList?.[0]?.name}/>
-                                <p><input type = 'text' value = 'Surname'/></p>
-                                <input type = 'text' value = {usersList?.[0]?.address.city}/>
-                                <p><input type = 'text' value = 'Partner'/></p>
+                                <input type = 'text' value = { name } onChange={event =>setName(event.target.value)}/>
+                                <p><input type = 'text' value = { company } onChange={event =>setCompany(event.target.value)}/></p>
+                                <input type = 'text' value = { city } onChange={event =>setCity(event.target.value)}/>
+                                <p><input type = 'text' value = {partner} onChange={event =>setPartner(event.target.value)}/></p>
                             </div>
                             <div className = 'right'>
-                                <input type = 'text' value = {usersList?.[0]?.email}/>
-                                <p><input type = 'text' value = {usersList?.[0]?.phone}/></p>
+                                <input type = 'text' value = { email } onChange={event =>setEmail(event.target.value)}/>
+                                <p><input type = 'text' value = { phone } onChange={event =>setPhone(event.target.value)}/></p>
                             </div>
                         </div>
                     </Edit>

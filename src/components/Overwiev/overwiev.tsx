@@ -91,7 +91,6 @@ export const Overwiev: FC = () => {
     const { commentsList } = useSelector<IState, ICommentsReducer>(globalState => globalState.comments);
     const { postsList } = useSelector<IState, IPostsReducer>(globalState => globalState.posts);
 
-
     return(
         <OverwievPage>
             <Publications>
