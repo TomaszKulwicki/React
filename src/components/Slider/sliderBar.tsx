@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { FC } from "react";
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -26,6 +27,8 @@ position: relative;
   top: 90px;
   left: 130px;
   font-size: 20px;
+  text-decoration:underline #f1f1f1;
+  color: black;
 }
 .picture{
   height: 80px;
@@ -83,7 +86,7 @@ export const SliderBar: FC = () => {
         <div className = 'Title'>Workspaces</div>
         <Slider {...settings}>
           <MainWrapper>
-            <Tile>
+            <Tile>  
             <div>
               <img src = 'media/pictures/corpo.jpg' alt = '' className = 'picture'/>
             </div>
@@ -91,7 +94,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Client contract
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -101,6 +106,7 @@ export const SliderBar: FC = () => {
                 Last update 2 days
               </div>
             </BottomContainer>
+            
             </Tile>
           </MainWrapper>
           <MainWrapper>
@@ -112,7 +118,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Supplier contract
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -133,7 +141,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Corporate
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -154,7 +164,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Group norms
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -175,7 +187,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Real estate contracts
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -196,7 +210,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               E-commerence
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -217,7 +233,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Blog
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -238,7 +256,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Buissnes
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -259,7 +279,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Contact
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>
@@ -280,7 +302,9 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
+            <Link to = '/workspaces'>
               Books
+            </Link>
             </div>
             <BottomContainer>
               <div className = 'topText'>

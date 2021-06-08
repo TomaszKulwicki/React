@@ -227,7 +227,7 @@ export const Entities: FC = () => {
     let jpg3 = photosList[3]?.url;
     let jpg4 = photosList[4]?.url;
     
-    let [companies,setCompany]= useState([
+    let [companies]= useState([
         {name:'ASSA',jpg:jpg1},
         {name:'HID',jpg:jpg2},
         {name:'Spyrosoft',jpg:jpg3},

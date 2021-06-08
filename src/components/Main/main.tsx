@@ -9,6 +9,7 @@ import { Ecosystem } from '../Ecosystem/ecosystem';
 import { Entities } from '../Entities/entities';
 import { Overwiev } from '../Overwiev/overwiev';
 import { Profile } from '../Profile/profile';
+import { Workspaces } from '../Workspaces/workspaces';
 
 import { useDispatch } from 'react-redux';
 import { getUsers } from '../../actions/usersActions';
@@ -62,9 +63,12 @@ export const Main: FC = () => {
                             <Route path = '/profile'>
                                 <Profile/>
                             </Route>
+                            <Route path = '/workspaces'>
+                                <Workspaces/>   
+                            </Route> 
                             <Route path = '/'>
                                 <Overwiev/>
-                            </Route>        
+                            </Route>      
                         </Switch>   
                     </Content>  
                 </InnerWrapper> 
