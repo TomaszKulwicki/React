@@ -29,6 +29,7 @@ position: absolute;
 padding: 10px;
 width: 200px;
 margin-top:13px;
+z-index: 3;
 .title{
     color: grey;
     font-size: 15px;
@@ -76,6 +77,17 @@ height: 400px;
 
 export const ExpandedMenu: FC = () =>  {
 
+    const client = 'Client contract';
+    const suplier = 'Supplier contract';
+    const corpo = 'Corporate';
+    const norms = 'Group norms';
+    const real = 'Real estate contracts';
+    const commerence = 'E-commerence';
+    const blog = 'Blog';
+    const buisness = 'Buissnes';
+    const contact = 'Contact';
+    const books = 'Books';
+
     const { usersList } = useSelector<IState, IUsersReducer>(globalState => globalState.users);
     const { photosList } = useSelector<IState, IPhotosReducer>(globalState => globalState.photos);
 
@@ -97,12 +109,18 @@ export const ExpandedMenu: FC = () =>  {
             <Category>
                 <Platform>
                         <div className = 'title'>Platform</div>               
-                    <Link to = '/'>
+                    <Link to = '/' 
+                    style={{
+                        textDecoration: 'none', color: 'black'
+                    }}>
                     {'Home'.toLowerCase().includes(inputText.toLowerCase()) &&
                         <p><img src = 'media/icons/house.png' alt = ''/>Home</p>
                     }
                     </Link>
-                    <Link to = '/Publications'>
+                    <Link to = '/Publications' 
+                    style={{
+                        textDecoration: 'none', color: 'black'
+                    }}>
                     {'Publications'.toLowerCase().includes(inputText.toLowerCase()) &&
                         <p><img src = 'media/icons/publications.png' alt = ''/>Publications</p>
                     }
@@ -110,11 +128,14 @@ export const ExpandedMenu: FC = () =>  {
                     {'People'.toLowerCase().includes(inputText.toLowerCase()) &&
                         <p><img src = 'media/icons/people.png' alt = ''/>People</p>
                     }
-                        <Link to = '/Entities'>
+                    <Link to = '/Entities' 
+                    style={{
+                        textDecoration: 'none', color: 'black'
+                    }}>
                     {'Entities'.toLowerCase().includes(inputText.toLowerCase()) &&
                         <p><img src = 'media/icons/entities.png' alt = ''/>Entities</p>
                     }
-                        </Link>
+                    </Link>
                     {'Administration'.toLowerCase().includes(inputText.toLowerCase()) &&
                         <p><img src = 'media/icons/administration.png' alt = ''/>Administration</p>
                     }
@@ -122,34 +143,134 @@ export const ExpandedMenu: FC = () =>  {
                 <Workspaces>
                     <div className = 'title'>Workspaces</div>
                         {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Client contract</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Client contract'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {client}
+                              </Link></p>
                         }
                         {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Supplier contract</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Supplier contract'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {suplier}
+                              </Link></p>
                         }
                         {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/entities.png' alt = ''/>Corporate</p>
+                            <p><img src = 'media/icons/entities.png' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Corporate'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {corpo}
+                              </Link></p>
                         }
                         {'Group norms'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>Group norms</p>
+                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Group norms'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {norms}
+                              </Link></p>
                         }
                         {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Real estate contracts</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Real estate contracts'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {real}
+                              </Link></p>
                         }
                         {'E-commerence'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>E-commerence</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'E-commerence'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {commerence}
+                              </Link></p>
                         }
                         {'Blog'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Blog</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>           
+                             <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Blog'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {blog}
+                              </Link></p>
                         }
                         {'Buisness'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>Buissnes</p>
+                            <p><img src = 'media/icons/sticky-note-regular.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Buisness'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {buisness}
+                              </Link></p>
                         }
                         {'Contact'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/people.png' alt = ''/>Contact</p>
+                            <p><img src = 'media/icons/people.png' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Contact'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {contact}
+                              </Link></p>
                         }
                         {'Books'.toLowerCase().includes(inputText.toLowerCase()) &&
-                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>Books</p>
+                            <p><img src = 'media/icons/book-solid.svg' alt = ''/>            
+                            <Link to = {{
+                                pathname: '/workspaces',
+                                state: {
+                                  pass: 'Books'
+                                }
+                              }}style={{
+                                textDecoration: 'none', color: 'black'
+                              }}>
+                                {books}
+                              </Link></p>
                         }
                 </Workspaces>
             </Category>

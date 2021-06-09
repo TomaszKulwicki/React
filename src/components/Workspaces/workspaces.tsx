@@ -6,6 +6,7 @@ import { IPhotosReducer } from '../../reducers/photosReducers';
 import { ICommentsReducer } from '../../reducers/commentsReducers';
 
 import Pagination from '@material-ui/lab/Pagination';
+import { useLocation } from 'react-router';
 
 const MainWrapper = styled.div`
 width: 1000px;
@@ -32,12 +33,18 @@ border: 1px solid grey;
         height: 200px;
         width: 900px;
         .title{
-            background-color: black;
             width: 100%;
             height: 50%;
+            p{
+                position: absolute;
+                margin-top: 40px;
+                margin-left: 10px;
+                font-size: 40px;
+            }
+            
         }
         .desc{
-            width: 100%;
+            width: 700px;
             height: 50%;
             margin: 10px 10px 10px 10px;
         }
@@ -53,19 +60,35 @@ border: 1px solid grey;
 }
 `;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const Middle = styled.div`
 height: 300px;
 margin-top: 20px;
-.container{
+.container{ 
     height: 280px;
     margin: 10px;
-    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+    .tilesWrapper{
+        display: flex;
+    }
+    .text-wrapper{
+        display: flex;
+        margin: 10px 10px 0px 10px;
+        .right-text{
+            margin-left: 700px;
+        }
+    }
     .tiles{
+
         border: 1px grey solid;
         border-radius: 5px;
         width: 100%;
         height: 90%;
         margin: 14px 10px 10px 10px;
+        background-color: white;
         .image{
             width: 100%;
             height: 30%;
@@ -83,6 +106,8 @@ margin-top: 20px;
     }
 }
 `;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Bottom = styled.div`
 border: 1px black solid;
@@ -163,6 +188,8 @@ height: 90px;
 }
 `;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const CommentsWrapper = styled.div`
 .pagination{
     margin-bottom: 20px;
@@ -194,8 +221,15 @@ img{
 }
 `;
 
+interface Iworkspace {
+pass: string;
+}
+
 export const Workspaces: FC = () => {
     
+    const location = useLocation();
+    let passable = location.state as Iworkspace;
+
     let [currentPage,setCurrentPage] = useState(1)
     let [itemsPerPage] = useState(10)
 
@@ -221,7 +255,7 @@ export const Workspaces: FC = () => {
                     </div>
                     <div className = 'box'>
                         <div className = 'title'>
-                            
+                            <b><p>{passable.pass}</p></b>
                         </div>
                         <div className = 'desc'>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -234,40 +268,50 @@ export const Workspaces: FC = () => {
             </Top>
             <Middle>
                 <div className = 'container'>
-                    <div className = 'tiles'>
-                        <div className = 'image'>
-                            <img src = 'media/icons/block.png' alt = ''/>
+                    <div className = 'text-wrapper'>
+                        <div className = 'left-text'>
+                            Start working on corporate matters
                         </div>
-                        <div className = 'text'>
-                            Expolre your <b>entities</b>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
+                        <div className = 'right-text'>
+                            Hide
                         </div>
                     </div>
-                    <div className = 'tiles'>
-                        <div className = 'image'>
-                            <img src = 'media/icons/teamwork.png' alt = ''/>
+                    <div className = 'tilesWrapper'>
+                        <div className = 'tiles'>
+                            <div className = 'image'>
+                                <img src = 'media/icons/block.png' alt = ''/>
+                            </div>
+                            <div className = 'text'>
+                                Expolre your <b>entities</b>
+                                <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
                         </div>
-                        <div className = 'text'>
-                            Structure the <b>ownership</b>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
+                        <div className = 'tiles'>
+                            <div className = 'image'>
+                                <img src = 'media/icons/teamwork.png' alt = ''/>
+                            </div>
+                            <div className = 'text'>
+                                Structure the <b>ownership</b>
+                                <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className = 'tiles'>
-                        <div className = 'image'>
-                            <img src = 'media/icons/calendar.png' alt = ''/>
-                        </div>
-                        <div className = 'text'>
-                            Define your <b>calendar</b>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
+                        <div className = 'tiles'>
+                            <div className = 'image'>
+                                <img src = 'media/icons/calendar.png' alt = ''/>
+                            </div>
+                            <div className = 'text'>
+                                Define your <b>calendar</b>
+                                <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -325,7 +369,6 @@ export const Workspaces: FC = () => {
                       return val;
                   }else if(val.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
                       return val;
-
                   };
               }).slice(indexOfFirstItem, indexOfLastItem).map(comment => 
                 <Comment>

@@ -64,7 +64,7 @@ export const Main: FC = () => {
                                 <Profile/>
                             </Route>
                             <Route path = '/workspaces'>
-                                <Workspaces/>   
+                                <Workspaces />   
                             </Route> 
                             <Route path = '/'>
                                 <Overwiev/>

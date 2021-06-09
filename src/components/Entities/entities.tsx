@@ -227,7 +227,7 @@ export const Entities: FC = () => {
     let jpg3 = photosList[3]?.url;
     let jpg4 = photosList[4]?.url;
     
-    let [companies]= useState([
+    let [companies,setCompany]= useState([
         {name:'ASSA',jpg:jpg1},
         {name:'HID',jpg:jpg2},
         {name:'Spyrosoft',jpg:jpg3},
@@ -260,6 +260,21 @@ export const Entities: FC = () => {
         {name:'D',jpg:jpg2},]);
     
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+    const [sort, setSort] = useState(true)
+
+    function sorting() {
+        if(sort === true){
+            setCompany(companies.sort((a,b) => 0 - (a.name > b.name ? -1 : 1)))
+            setSort(false);
+            console.log(companies)
+        }
+        else{
+            setCompany(companies.sort((a,b) => 0 - (a.name > b.name ? 1 : -1)))
+            setSort(true);
+            console.log(companies)
+        }
+    }
 
     const [lineStyle,setLineStyle] = useState(true)
     function changeStyle() {
@@ -306,7 +321,7 @@ export const Entities: FC = () => {
                         All<div className = 'line'></div>
                         <img src = 'media/icons/more.png' className = 'more' alt = ''/>
                         <div className = 'line'></div>
-                        <img src = 'media/icons/sort.png' className = 'sort' alt = ''/>
+                        <img src = 'media/icons/sort.png' className = 'sort' alt = ''  onClick = {sorting}/>
                         Sort
                         <div className = 'line'></div>
                         <img src = 'media/icons/filter.png' className = 'filtr' alt = '' onClick = {toggleDropdown}/>

@@ -74,6 +74,17 @@ display: flex;
 
 export const SliderBar: FC = () => {
 
+    const client = 'Client contract';
+    const suplier = 'Supplier contract';
+    const corpo = 'Corporate';
+    const norms = 'Group norms';
+    const real = 'Real estate contracts';
+    const commerence = 'E-commerence';
+    const blog = 'Blog';
+    const buisness = 'Buissnes';
+    const contact = 'Contact';
+    const books = 'Books';
+
     const settings = {
         dots: true,
         infinite: true,
@@ -94,8 +105,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Client contract
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Client contract'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {client}
             </Link>
             </div>
             <BottomContainer>
@@ -106,7 +124,6 @@ export const SliderBar: FC = () => {
                 Last update 2 days
               </div>
             </BottomContainer>
-            
             </Tile>
           </MainWrapper>
           <MainWrapper>
@@ -118,8 +135,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Supplier contract
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Supplier contract'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {suplier}
             </Link>
             </div>
             <BottomContainer>
@@ -141,8 +165,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Corporate
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Corporate'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {corpo}
             </Link>
             </div>
             <BottomContainer>
@@ -164,8 +195,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Group norms
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Group norms'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {norms}
             </Link>
             </div>
             <BottomContainer>
@@ -187,8 +225,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Real estate contracts
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Real estate contracts'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {real}
             </Link>
             </div>
             <BottomContainer>
@@ -210,8 +255,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              E-commerence
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'E-commerence'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {commerence}
             </Link>
             </div>
             <BottomContainer>
@@ -233,8 +285,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Blog
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Blog'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {blog}
             </Link>
             </div>
             <BottomContainer>
@@ -256,8 +315,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Buissnes
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Buisness'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {buisness}
             </Link>
             </div>
             <BottomContainer>
@@ -279,8 +345,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Contact
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Contact'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {contact}
             </Link>
             </div>
             <BottomContainer>
@@ -302,8 +375,15 @@ export const SliderBar: FC = () => {
               <img src = 'media/icons/sticky-note-regular.svg' alt = 'Photo'/>
             </div>
             <div className = 'text'>
-            <Link to = '/workspaces'>
-              Books
+            <Link to = {{
+              pathname: '/workspaces',
+              state: {
+                pass: 'Books'
+              }
+            }}style={{
+              textDecoration: 'none', color: 'black'
+            }}>
+              {books}
             </Link>
             </div>
             <BottomContainer>
